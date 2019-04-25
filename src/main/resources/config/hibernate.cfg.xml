@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+	<property name="hibernate.connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<property name="hibernate.connection.url">
+		jdbc:mysql://localhost:3306/db
+	</property>
+	<property name="hibernate.connection.username">root</property>
+	<property name="hibernate.connection.password">root</property>
+
+	<property name="hibernate.dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
+	<property name="hibernate.hbm2ddl.auto">update</property>
+	<property name="hibernate.show_sql">true</property>
+	<property name="hibernate.format_sql">true</property>
+	<property name="hibernate.connection.autocommit">true</property>
+
+
+	<property name="connection.provider_class">
+		org.hibernate.connection.C3P0ConnectionProvider
+	</property>
+	<property name="c3p0.min_size">5</property>
+	<property name="c3p0.max_size">20</property>
+	<property name="c3p0.timeout">120</property>
+	<property name="c3p0.idle_test_period">3000</property>
+	
+	<mapping resource="cn/jja/vo/Book.hbm.xml" />
+
+</session-factory>
+</hibernate-configuration>

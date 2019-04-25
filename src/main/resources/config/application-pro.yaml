@@ -1,0 +1,18 @@
+spring:
+  profiles: pro
+
+  datasource:
+    url: jdbc:mysql://47.96.125.85:3306/topshow?useSSL=false
+    username: topshow
+    password: M81oPdMtc
+    driver-class-name: com.mysql.jdbc.Driver
+
+  redis:
+    port: 6379
+    host: 47.96.125.85
+    password: NE1Ik4aEm1I1Br8aYJ0nwPV
+    database: 1
+    timeout: 5000ms
+
+swagger:
+  show: false

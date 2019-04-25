@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xxxxx">
+   
+   <select id="selectUsers" resultType="user">
+     select name,phone,email from user
+   </select>
+
+    <select id="selectUserByQuery" resultType="user">
+        SELECT * FROM user
+        <where>
+            <if test="email != null and email != ''">
+                email = #{email}
+            </if>
+
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="enable != null">
+                and enable = #{enable}
+            </if>
+        </where>
+    </select>
+   
+   <insert id="insertOne">
+       INSERT INTO user(
+        name,
+        phone,
+        email,
+        password,
+        aboutme,
+        type,
+        create_time,
+        enable,
+        avatar,
+        agency_id
+       ) VALUES (
+        #{name},
+        #{phone},
+        #{email},
+        #{password},
+        #{aboutme},
+        #{type},
+        #{createTime},
+        #{enable},
+        #{avatar},
+        #{agencyId}
+       )
+   </insert>
+
+    <delete id="delete">
+        DELETE FROM user where email = #{email}
+    </delete>
+
+    <update id="update">
+        UPDATE user
+        <set>
+            <if test="phone != null and phone != ''">
+                phone = #{phone}
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name}
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password}
+            </if>
+            <if test="enable != null">
+                enable = #{enable}
+            </if>
+            <if test="aboutme != null and aboutme != ''">
+                aboutme = #{aboutme}
+            </if>
+        </set>
+        WHERE email = #{email}
+    </update>
+
+</mapper>
