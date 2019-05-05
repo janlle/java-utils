@@ -1,4 +1,4 @@
-package com.leone.util;
+package com.leone.util.common;
 
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;

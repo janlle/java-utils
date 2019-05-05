@@ -29,6 +29,8 @@ public class AliSmsService {
 
     private static final Logger logger = LoggerFactory.getLogger(AliSmsService.class);
 
+    private static Random random = new Random();
+
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
@@ -45,7 +47,7 @@ public class AliSmsService {
      * @return
      * @throws ClientException
      */
-    public boolean send(String phone) throws ClientException {
+    public boolean sendSms(String phone) throws ClientException {
         deleteCaptcha(phone);
         String captcha = randomNum(aliSmsProperties.getCaptchaLength());
         IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", aliSmsProperties.getAccessKeyId(), aliSmsProperties.getAccessKeySecret());
@@ -104,11 +106,10 @@ public class AliSmsService {
      * @return
      */
     public static String randomNum(Integer length) {
-        Random rand = new Random();
         StringBuffer result = new StringBuffer();
         final String sources = "0123456789";
         for (int i = 0; i < length; i++) {
-            result.append(sources.charAt(rand.nextInt(9)));
+            result.append(sources.charAt(random.nextInt(9)));
         }
         return result.toString();
     }

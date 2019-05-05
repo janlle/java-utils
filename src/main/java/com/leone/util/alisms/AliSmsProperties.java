@@ -1,7 +1,13 @@
 package com.leone.util.alisms;
 
-//@Component
-//@ConfigurationProperties(prefix = "com.xxx.module.sms")
+import org.springframework.stereotype.Component;
+
+/**
+ * <p>
+ *
+ * @author leone
+ **/
+@Component
 public class AliSmsProperties {
 
     private String signName;

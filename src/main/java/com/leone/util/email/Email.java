@@ -1,6 +1,7 @@
 package com.leone.util.email;
 
 import javax.activation.DataSource;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Properties;
 
@@ -10,44 +11,31 @@ import java.util.Properties;
  * @author leone
  * @since 2019-04-26
  **/
-public class Email {
-    /**
-     * 配置session属性
-     */
+public class Email implements Serializable {
+
+    // 配置session属性
     private Properties props;
-    /**
-     * 发送者
-     */
+
+    // 发送者
     private String sender;
-    /**
-     * 发送者邮箱账号
-     */
+
+    // 发送者邮箱账号
     private String username;
-    /**
-     * 发送者邮箱密码
-     */
+
+    // 发送者邮箱密码
     private String password;
-    /**
-     * 接收者
-     */
+
+    // 接收者
     private String receiver;
-    /**
-     * 标题
-     */
+
+    // 标题
     private String title;
-    /**
-     * 邮件内容
-     */
+
+    // 邮件内容
     private String content;
-    /**
-     * 附件
-     */
+
+    // 附件
     private List<DataSource> attachments;
-
-
-    public Email() {
-
-    }
 
     public Properties getProps() {
         return props;
@@ -63,6 +51,22 @@ public class Email {
 
     public void setSender(String sender) {
         this.sender = sender;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getReceiver() {
@@ -96,22 +100,4 @@ public class Email {
     public void setAttachments(List<DataSource> attachments) {
         this.attachments = attachments;
     }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
 }

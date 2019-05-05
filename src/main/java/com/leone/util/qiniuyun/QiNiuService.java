@@ -2,7 +2,7 @@ package com.leone.util.qiniuyun;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.leone.util.RandomValue;
+import com.leone.util.common.RandomValue;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;

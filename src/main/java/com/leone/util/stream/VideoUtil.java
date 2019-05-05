@@ -1,4 +1,4 @@
-package com.leone.util;
+package com.leone.util.stream;
 
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;

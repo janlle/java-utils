@@ -1,4 +1,4 @@
-package com.leone.util;
+package com.leone.util.image;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;

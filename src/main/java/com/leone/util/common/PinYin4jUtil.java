@@ -1,4 +1,4 @@
-package com.leone.util;
+package com.leone.util.common;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
@@ -14,7 +14,7 @@ import java.util.Arrays;
  * @author leone
  * @since 2019-04-26
  **/
-public class PinYin4jUtils {
+public class PinYin4jUtil {
     /**
      * 将字符串转换成拼音数组
      *

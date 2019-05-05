@@ -1,4 +1,4 @@
-package com.leone.util;
+package com.leone.util.oauth;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
