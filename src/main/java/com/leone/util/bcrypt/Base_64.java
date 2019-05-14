@@ -1,4 +1,4 @@
-package com.leone.util.enbcrypt;
+package com.leone.util.bcrypt;
 
 import java.util.Base64;
 

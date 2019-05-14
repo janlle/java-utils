@@ -1,4 +1,4 @@
-package com.leone.util.enbcrypt;
+package com.leone.util.bcrypt;
 
 import org.apache.commons.codec.binary.Base64;
 

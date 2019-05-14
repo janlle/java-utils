@@ -1,4 +1,4 @@
-package com.leone.util.enbcrypt;
+package com.leone.util.bcrypt;
 
 import org.mindrot.jbcrypt.BCrypt;
 

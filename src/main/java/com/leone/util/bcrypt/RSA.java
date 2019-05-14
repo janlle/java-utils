@@ -1,4 +1,4 @@
-package com.leone.util.enbcrypt;
+package com.leone.util.bcrypt;
 
 import lombok.extern.slf4j.Slf4j;
 
