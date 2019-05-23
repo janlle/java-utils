@@ -15,10 +15,7 @@ import javax.annotation.Resource;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * <p>
@@ -79,9 +76,11 @@ public class QiNiuService {
      * @param bucket
      * @return
      */
-    public QiNiuToken getToken(String bucket) {
+    public Map<String, String> getToken(String bucket) {
         String token = auth.uploadToken(properties.getBucket(), bucket);
-        return new QiNiuToken(token);
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+        return map;
     }
 
     /**
@@ -90,13 +89,13 @@ public class QiNiuService {
      * @param file
      * @return
      */
-    public FileVO upload(MultipartFile file) {
+    public List<String> upload(MultipartFile file) {
         try {
             byte[] fileBytes = file.getBytes();
             String token = getToken();
             Response res = uploadManager.put(fileBytes, null, token);
             QiNiu qiniu = res.jsonToObject(QiNiu.class);
-            return new FileVO(Collections.singletonList(properties.getLinkAddress() + qiniu.getKey()));
+            return Collections.singletonList(properties.getLinkAddress() + qiniu.getKey());
         } catch (IOException e) {
             logger.error("message:{}", e.getMessage());
             return null;
@@ -109,7 +108,7 @@ public class QiNiuService {
      * @param files
      * @return
      */
-    public FileVO uploadBatch(MultipartFile[] files) {
+    public List<String> uploadBatch(MultipartFile[] files) {
         if (Objects.isNull(files)) {
             throw new RuntimeException("file array is empty");
         }
@@ -125,7 +124,7 @@ public class QiNiuService {
                 logger.error("message:{}", e.getMessage());
             }
         }
-        return new FileVO(list);
+        return list;
     }
 
     /**
@@ -134,7 +133,7 @@ public class QiNiuService {
      * @param inputStream
      * @return
      */
-    public FileVO uploadStream(InputStream inputStream) {
+    public List<String> uploadStream(InputStream inputStream) {
         try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
             byte[] buffer = new byte[1024];
             int len;
@@ -145,7 +144,7 @@ public class QiNiuService {
             byte[] byteData = outputStream.toByteArray();
             Response res = uploadManager.put(byteData, null, getToken());
             QiNiu qiniu = res.jsonToObject(QiNiu.class);
-            return new FileVO(Collections.singletonList(properties.getLinkAddress() + qiniu.getKey()));
+            return Collections.singletonList(properties.getLinkAddress() + qiniu.getKey());
         } catch (IOException e) {
             logger.error("message:{}", e.getMessage());
             return null;
