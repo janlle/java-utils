@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
  * @author leone
  **/
 @Component
+//@ConfigurationProperties(prefix = "module.sms")
 public class AliSmsProperties {
 
     private String signName;

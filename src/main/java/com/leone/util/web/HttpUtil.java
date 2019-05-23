@@ -45,8 +45,6 @@ public class HttpUtil {
 
     private static final Logger log = LoggerFactory.getLogger(HttpUtil.class);
 
-    private final static String UTF8 = StandardCharsets.UTF_8.displayName();
-
     private static CloseableHttpClient httpClient;
 
     static {

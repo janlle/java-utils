@@ -18,14 +18,12 @@ import java.util.Map;
  **/
 @Slf4j
 @RestController
-@Api(tags = "七牛云模块")
-@RequestMapping("api/file")
+@RequestMapping("/api/qn")
 public class QiNiuController {
 
     @Resource
     private QiNiuService qiNiuService;
 
-    @ApiOperation(value = "获取Token")
     @GetMapping("/token")
     public String token(@RequestParam(value = "key", required = false, defaultValue = "") String key,
                         @RequestParam(value = "expires", required = false, defaultValue = "3600") long expires,
