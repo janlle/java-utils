@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 /**
- * <p> opencv图像处理工具类
+ * <p> opencv 图像处理工具类
  *
  * @author leone
  * @since 2019-04-26

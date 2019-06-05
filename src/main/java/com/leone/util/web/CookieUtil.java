@@ -28,7 +28,7 @@ public class CookieUtil {
     }
 
     private static Map<String, Cookie> read(HttpServletRequest request) {
-        Cookie cookies[] = request.getCookies();
+        Cookie[] cookies = request.getCookies();
         Map<String, Cookie> map = new HashMap<>();
         if (cookies != null) {
             for (Cookie cookie : cookies) {

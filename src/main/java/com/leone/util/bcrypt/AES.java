@@ -1,5 +1,6 @@
 package com.leone.util.bcrypt;
 
+import lombok.extern.slf4j.Slf4j;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import javax.crypto.Cipher;
@@ -8,6 +9,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.security.SecureRandom;
 import java.security.Security;
@@ -18,6 +20,7 @@ import java.security.Security;
  * @author Leone
  * @since 2018-05-01
  **/
+@Slf4j
 public class AES {
 
     private static String encodeRules = "lyon";
@@ -39,8 +42,6 @@ public class AES {
 //        System.out.println("请输入要解密的内容（密文）:");
 //        content = scanner.next();
         System.out.println("根据输入的规则" + encodeRules + "解密后的明文是:" + AESDecode(encodeRules, result));
-
-        jdkAES();
         bcAES();
     }
 
@@ -112,28 +113,56 @@ public class AES {
         return null;
     }
 
-    public static void jdkAES() {
+    /**
+     * 加密
+     *
+     * @param content
+     * @param rule
+     * @return
+     */
+    public static String encode(String content, String rule) {
         try {
             KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-            keyGenerator.init(128);
+            SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
+            secureRandom.setSeed(rule.getBytes(StandardCharsets.UTF_8));
+            keyGenerator.init(128, secureRandom);
             SecretKey secretKey = keyGenerator.generateKey();
             byte[] keyBytes = secretKey.getEncoded();
             Key key = new SecretKeySpec(keyBytes, "AES");
-
-            //加密
             Cipher cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.ENCRYPT_MODE, key);
             byte[] encodeResult = cipher.doFinal(content.getBytes());
-            System.out.println("AESEncode : " + DatatypeConverter.printHexBinary(encodeResult));
-
-            //解密
-            cipher.init(Cipher.DECRYPT_MODE, key);
-            byte[] decodeResult = cipher.doFinal(encodeResult);
-            System.out.println("AESDecode : " + new String(decodeResult));
+            return new HexBinaryAdapter().marshal(encodeResult);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
+        return null;
+    }
 
+    /**
+     * 解密
+     *
+     * @param content
+     * @param rule
+     * @return
+     */
+    public static String decode(String content, String rule) {
+        try {
+            KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+            SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
+            secureRandom.setSeed(rule.getBytes(StandardCharsets.UTF_8));
+            keyGenerator.init(128, secureRandom);
+            SecretKey secretKey = keyGenerator.generateKey();
+            byte[] keyBytes = secretKey.getEncoded();
+            Key key = new SecretKeySpec(keyBytes, "AES");
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.DECRYPT_MODE, key);
+            byte[] decodeResult = cipher.doFinal(DatatypeConverter.parseHexBinary(content));
+            return new String(decodeResult);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+        return null;
     }
 
 

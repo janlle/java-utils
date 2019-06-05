@@ -3,6 +3,7 @@ package com.leone.util.bcrypt;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.Security;
 
@@ -28,7 +29,7 @@ public class MD {
     }
 
     public static void test(String content) throws Exception {
-        byte[] hashCode = content.getBytes("UTF-8");
+        byte[] hashCode = content.getBytes(StandardCharsets.UTF_8);
         for (int i = 0; i < hashCode.length; i++) {
             System.out.println(hashCode[i]);
         }
@@ -44,7 +45,7 @@ public class MD {
         StringBuffer sb = new StringBuffer();
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("MD2");
-            byte[] hashCode = messageDigest.digest(content.getBytes("UTF-8"));
+            byte[] hashCode = messageDigest.digest(content.getBytes(StandardCharsets.UTF_8));
             for (byte b : hashCode) {
                 sb.append(Character.forDigit(b >> 4 & 0xf, 16));
                 sb.append(Character.forDigit(b & 0xf, 16));
@@ -79,22 +80,21 @@ public class MD {
 
 
     /**
-     * MD5加密
+     * md5摘要算法
      *
-     * @param content
+     * @param content 需要签名的算法
      * @return
      */
     public static String MD5(String content) {
-        StringBuffer sb = new StringBuffer();
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            messageDigest.update(content.getBytes("UTF-8"));
+            messageDigest.update(content.getBytes(StandardCharsets.UTF_8));
             byte[] hashCode = messageDigest.digest();
             return new HexBinaryAdapter().marshal(hashCode).toLowerCase();
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return sb.toString();
     }
 
 

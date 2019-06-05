@@ -15,13 +15,11 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * @author wind
- * @version V1.0
- * @Title: DbUtil
- * @Package com.wind.jdbc
- * @Description: Db工具类
- * @date 2018/10/11 9:56
- */
+ * <p>
+ *
+ * @author leone
+ * @since 2019-06-05
+ **/
 public class DbUtil {
 
     private static Properties props = PropUtil.getProp("src/main/resources/jdbc.properties");

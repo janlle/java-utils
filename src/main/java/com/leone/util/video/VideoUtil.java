@@ -1,4 +1,4 @@
-package com.leone.util.stream;
+package com.leone.util.video;
 
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;
@@ -7,8 +7,7 @@ import org.bytedeco.javacv.Java2DFrameConverter;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 
 /**
@@ -61,4 +60,21 @@ public class VideoUtil {
             e.printStackTrace();
         }
     }
+
+    /**
+     * @param ins
+     * @param file
+     */
+    public static void inputStreamToFile(InputStream ins, File file) {
+        try (OutputStream os = new FileOutputStream(file)) {
+            int bytesRead = 0;
+            byte[] buffer = new byte[8192];
+            while ((bytesRead = ins.read(buffer, 0, 8192)) != -1) {
+                os.write(buffer, 0, bytesRead);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

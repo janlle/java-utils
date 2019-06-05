@@ -1,13 +1,19 @@
-package com.leone.util.jdbc;
+package com.leone.util.jdbc.conn;
 
 import java.sql.*;
 
-public class MySqlConnUtil {
+/**
+ * <p>
+ *
+ * @author leone
+ * @since 2019-06-05
+ **/
+public class SqlServerConnUtil {
 
-    private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/mysql";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
+    private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    private static final String URL = "jdbc:sqlserver://39.108.125.41:1433;databasename=master";
+    private static final String USERNAME = "SA";
+    private static final String PASSWORD = "Rl)^@)15";
 
     static {
         try {
@@ -63,6 +69,5 @@ public class MySqlConnUtil {
     public static void main(String[] args) {
         System.out.println(getConnection());
     }
-
 
 }

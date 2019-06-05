@@ -90,9 +90,7 @@ public class XmlUtil {
         });
         try {
             reader.read(new BufferedInputStream(new FileInputStream(new File(filePath))));
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
+        } catch (DocumentException | FileNotFoundException e) {
             e.printStackTrace();
         }
 

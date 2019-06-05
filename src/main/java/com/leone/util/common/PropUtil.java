@@ -11,7 +11,8 @@ import java.util.Properties;
  * @author leone
  * @since 2019-04-26
  **/
-public class PropUtil {
+public class
+PropUtil {
 
     /**
      * 解析properties文件

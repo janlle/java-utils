@@ -1,12 +1,19 @@
-package com.leone.util.jdbc;
+package com.leone.util.jdbc.conn;
 
 import java.sql.*;
 
-public class SqlServerJdbcUtil {
-    private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private static final String URL = "jdbc:sqlserver://localhost:1433;databasename=tests";
-    private static final String USERNAME = "sa";
-    private static final String PASSWORD = "sasa";
+/**
+ * <p>
+ *
+ * @author leone
+ * @since 2019-06-05
+ **/
+public class OracleConnUtil {
+
+    private final static String DRIVER = "oracle.jdbc.driver.OracleDriver";
+    private final static String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
+    private final static String USERNAME = "scott";
+    private final static String PASSWORD = "tiger";
 
     static {
         try {
@@ -62,6 +69,5 @@ public class SqlServerJdbcUtil {
     public static void main(String[] args) {
         System.out.println(getConnection());
     }
-
 
 }
