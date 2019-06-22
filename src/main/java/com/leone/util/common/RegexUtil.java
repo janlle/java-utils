@@ -22,6 +22,11 @@ public class RegexUtil {
 
     private final static String ID_CARD = "^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{4}$";
 
+    private final static String IP = "^(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|[1-9])(\\.(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)){3}$";
+
+    private final static String URL = "((http|ftp|https)://)(([a-zA-Z0-9._-]+)|([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}))(([a-zA-Z]{2,6})|(:[0-9]{1,4})?)";
+
+
     /**
      * 校验邮箱
      *
@@ -95,4 +100,26 @@ public class RegexUtil {
         Matcher m = p.matcher(str);
         return m.matches();
     }
+
+    /**
+     * 校验ip
+     *
+     * @param ip
+     * @return
+     */
+    public static boolean checkIp(String ip) {
+        return checkStr(IP, ip);
+    }
+
+    /**
+     * 校验ip
+     *
+     * @param url
+     * @return
+     */
+    public static boolean checkUrl(String url) {
+        return checkStr(IP, url);
+    }
+
+
 }
