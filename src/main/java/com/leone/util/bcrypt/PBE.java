@@ -27,7 +27,7 @@ public class PBE {
             byte[] salt = random.generateSeed(8);   //指定为8位的盐 （盐就是干扰码，通过添加干扰码增加安全）
 
             //口令和密钥
-            String password="lynu";              //口令
+            String password="leone";              //口令
             PBEKeySpec pbeKeySpec=new PBEKeySpec(password.toCharArray());
             SecretKeyFactory factory=SecretKeyFactory.getInstance("PBEWITHMD5andDES");
             Key key=factory.generateSecret(pbeKeySpec);  //密钥

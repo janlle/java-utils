@@ -37,7 +37,7 @@
         </javaClientGenerator>
 
         <!-- 要生成那些表(更改tableName 和 domainObjectName就可以) --> <!-- 6 -->
-        <table tableName="t_user" domainObjectName="User" enableCountByExample="false"
+        <table tableName="t_phone" domainObjectName="Phone" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>
 
