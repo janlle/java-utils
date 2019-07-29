@@ -1,8 +1,5 @@
 package com.leone.util.bcrypt;
 
-import org.bouncycastle.crypto.Digest;
-import org.bouncycastle.crypto.digests.SHA224Digest;
-
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 import java.security.MessageDigest;
 
@@ -14,17 +11,21 @@ import java.security.MessageDigest;
  **/
 public class SHA {
 
-    private static final String SRC = "hello";
-
     public static void main(String[] args) {
+        String content = "hello";
 //        Scanner scanner = new Scanner(System.in);
 //        System.out.println("请输入要加密的内容:");
 //        String input = scanner.nextLine();
-        String result = SHA.SHA384(SRC);
+        String result = SHA.SHA384(content);
         System.out.println(result);
     }
 
-    //jdk实现
+    /**
+     * hash1
+     *
+     * @param content
+     * @return
+     */
     public static String SHA1(String content) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA");
@@ -37,21 +38,12 @@ public class SHA {
         return null;
     }
 
-    //非jdk实现
-    public static String SHA224(String content) {
-        try {
-            Digest digest = new SHA224Digest();
-            digest.update(content.getBytes(), 0, content.getBytes().length);
-            byte[] hashCode = new byte[digest.getDigestSize()];
-            digest.doFinal(hashCode, 0);
-            HexBinaryAdapter adapter = new HexBinaryAdapter();
-            return adapter.marshal(hashCode).toLowerCase();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
+    /**
+     * hash256
+     *
+     * @param content
+     * @return
+     */
     public static String SHA256(String content) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
@@ -65,6 +57,12 @@ public class SHA {
     }
 
 
+    /**
+     * hash384
+     *
+     * @param content
+     * @return
+     */
     public static String SHA384(String content) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-384");
@@ -77,6 +75,12 @@ public class SHA {
         return null;
     }
 
+    /**
+     * hash512
+     *
+     * @param content
+     * @return
+     */
     public static String SHA512(String content) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");

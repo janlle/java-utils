@@ -14,6 +14,7 @@
 
     <dependencies>
 
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -171,7 +172,6 @@
             <version>7.2.1.jre8</version>
         </dependency>
 
-
         <!--极光推送-->
         <dependency>
             <groupId>cn.jpush.api</groupId>
@@ -190,6 +190,12 @@
             <groupId>org.bytedeco</groupId>
             <artifactId>javacv</artifactId>
             <version>1.4.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
         </dependency>
 
     </dependencies>
@@ -232,6 +238,7 @@
                         </goals>
                     </execution>
                 </executions>
+
                 <dependencies>
                     <dependency>
                         <groupId>org.mybatis.generator</groupId>

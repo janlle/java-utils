@@ -88,7 +88,6 @@ public class DES {
 
 
     public static void jdkDES(String encodeRules, String content) {
-
         try {
             //生成密钥Key
             KeyGenerator keyGenerator = KeyGenerator.getInstance("DES");
@@ -113,7 +112,6 @@ public class DES {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
 

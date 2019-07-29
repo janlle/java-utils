@@ -23,10 +23,7 @@ import java.util.HashMap;
  * @since 2018-05-01
  **/
 @Slf4j
-public class RSA {
-
-    private RSA() {
-    }
+public abstract class RSA {
 
     private static String src = "{\"appId\":\"109098\",\"nonceStr\":\"nonceStr\",\"timestamp\":1558703431,\"data\":{\"userId\":1001,\"account\":\"1009\",\"password\":\"1209098\",\"description\":\"hello world\",\"age\":18,\"deleted\":false}}";
 
@@ -259,8 +256,8 @@ public class RSA {
         PrivateKey privateKey = keyPair.getPrivate();
         PublicKey publicKey = keyPair.getPublic();
         try {
-            String pubKey = new String(encoder.encodeToString(publicKey.getEncoded()));
-            String priKey = new String(encoder.encodeToString(privateKey.getEncoded()));
+            String pubKey = encoder.encodeToString(publicKey.getEncoded());
+            String priKey = encoder.encodeToString(privateKey.getEncoded());
             BufferedWriter pubFileWriter = new BufferedWriter(new FileWriter(path + "/pub_key.pen"));
             BufferedWriter priFileWriter = new BufferedWriter(new FileWriter(path + "/pri_key.pen"));
             pubFileWriter.write(pubKey);

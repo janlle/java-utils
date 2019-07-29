@@ -6,30 +6,48 @@ import java.util.Base64;
  * @author Leone
  * @since 2018-05-10
  **/
-public class Base_64 {
+public abstract class Base_64 {
 
-    private Base_64() {
-    }
-
-    private static final String src = "hello world";
+    private static Base64.Encoder encoder = Base64.getEncoder();
+    private static Base64.Decoder decoder = Base64.getDecoder();
 
     public static void main(String[] args) {
-        Base_64.jdk8Base64(src);
+        String content = "hello world";
+
+        String encode = encode(content);
+        System.out.println(encode);
+
+        String decode = decode(encode);
+        System.out.println(decode);
     }
 
 
-    // JDK8 base64实现
-    public static void jdk8Base64(String content) {
-        Base64.Encoder encoder = Base64.getEncoder();
-        Base64.Decoder decoder = Base64.getDecoder();
+    /**
+     * JDK8 base64 编码
+     *
+     * @param content
+     */
+    public static String encode(String content) {
         try {
-            byte[] encode = encoder.encode(content.getBytes());
-            System.out.println("encode:  " + encode);
-            String decode = new String(decoder.decode(encode));
-            System.out.println("decode:  " + decode);
+            return new String(encoder.encode(content.getBytes()));
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    /**
+     * JDK8 base64 解码
+     *
+     * @param content
+     */
+    public static String decode(String content) {
+        try {
+            return new String(decoder.decode(content));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

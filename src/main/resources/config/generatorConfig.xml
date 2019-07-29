@@ -12,7 +12,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://ip:3306/db?useSSL=false"
                         userId="xxx"
-                        password="xxx"><!-- 2 -->
+                        password="xxx">
         </jdbcConnection>
 
         <!-- 默认为false，把JDBC DECIMAL 和NUMERIC 类型解析为 Integer，为 true 时把 JDBC DECIMAL 和NUMERIC类型解析为java.math.BigDecimal -->
@@ -20,18 +20,18 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <!-- 生成实体路径 --> <!-- 3 -->
+        <!-- 生成实体路径 -->
         <javaModelGenerator targetPackage="com.leone.test.module" targetProject="./src">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <!-- 生成 xml 映射文件的路径 --> <!-- 4 -->
+        <!-- 生成 xml 映射文件的路径 -->
         <sqlMapGenerator targetPackage="com.leone.test.xml" targetProject="./src">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <!-- 生成 mapper 接口的路径 --> <!-- 5 -->
+        <!-- 生成 mapper 接口的路径 -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.leone.test.mapper" targetProject="./src">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
