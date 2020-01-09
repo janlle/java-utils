@@ -33,7 +33,7 @@ public class ZipUtil {
             }
 
             if (targetFile.exists()) {
-                targetFile.delete(); // 删除旧的文件
+                targetFile.delete();
             }
             FileOutputStream fos = null;
             try {
