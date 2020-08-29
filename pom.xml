@@ -56,7 +56,6 @@
             <artifactId>java-jwt</artifactId>
             <version>3.4.0</version>
         </dependency>
-
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
@@ -130,12 +129,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-            <version>1.3.7</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
             <version>2.0.13.RELEASE</version>
@@ -198,13 +191,30 @@
             <version>1.7.25</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.yunify</groupId>
+            <artifactId>qingstor.sdk.java</artifactId>
+            <version>2.3.4</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <finalName>java-utils</finalName>
 
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -262,9 +272,9 @@
                 <includes>
                     <include>**/*.*</include>
                 </includes>
+
                 <filtering>false</filtering>
             </resource>
-
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
@@ -277,5 +287,6 @@
             </resource>
         </resources>
     </build>
+
 
 </project>

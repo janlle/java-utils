@@ -1,4 +1,4 @@
-package com.aoya.share.test;
+package com.leone.util.image;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -7,6 +7,8 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.leone.util.common.Constants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReadParam;
@@ -33,6 +35,9 @@ import java.util.Random;
  * @since 2019-04-26
  **/
 public class ImageUtil {
+
+    private static final Logger logger = LoggerFactory.getLogger(ImageUtil.class);
+
     /**
      * 读取图片，获取BufferedImage对象
      *
@@ -623,7 +628,7 @@ public class ImageUtil {
             ImageIO.write(img, format, response.getOutputStream());
         } catch (Exception e) {
             e.printStackTrace();
-            log.info("createQRCode error");
+            logger.info("createQRCode error");
         }
     }
 
